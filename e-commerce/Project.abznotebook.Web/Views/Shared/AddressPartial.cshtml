@@ -1,0 +1,39 @@
+﻿@using Project.abznotebook.Web.Pages
+@model Address
+
+<style>
+    .show-hide {
+        visibility: hidden;
+    }
+
+    .col-md-4:hover .show-hide {
+        visibility: visible;
+    }
+
+    .col-md-4:hover .card {
+        z-index: 1;
+        filter: drop-shadow(0 0 2px lightgray);
+    }
+
+    .card p, h3 {
+        cursor: default;
+    }
+</style>
+
+<div class="col-md-4" style="padding:0">
+    <div class="card h-100" style="border-radius: 0; margin:0; padding:10px; padding-bottom:20px;">
+        <div class="card-body">
+            <div class="mb-4" style="width:100%; background-color:lightgray; padding: 10px; border-radius:5px">
+                <h3 class="card-img-top text-center">@Model.Title</h3>
+            </div>
+            <div>
+                <p>@Model.AddressLine</p>
+                <p>@Model.Neighborhood</p>
+                <p>@Model.City / @Model.District</p>
+                <p>@Model.PostalCode</p>
+                <a asp-action="EditAddress" asp-controller="Address" class="btn btn-primary show-hide" asp-route-addressId="@Model.Id" >Düzenle</a>
+                <a asp-action="DeleteAddress" asp-controller="Address" class="btn btn-danger show-hide" asp-route-addressId="@Model.Id">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>

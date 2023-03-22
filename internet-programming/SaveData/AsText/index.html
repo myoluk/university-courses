@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Not Otomasyonu | Veri Kayıt (.txt)</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="data-txt.js"></script>
+
+<body onload="OgrenciListele();">
+    <h1>Öğrenci Not Otomasyonu</h1>
+    <h3>@myoluk</h3>
+    <br>
+    <p style="text-align: center;">Öğrenci bilgilerinin <strong>metin dosyası</strong> ile okunup / yazılması.</p>
+
+    <!-- Dosya okuma / yazma tablosu -->
+    <table>
+        <thead>
+            <th colspan="3" style="text-align: center; background-color: gray;">
+                Metin Dosyası (.txt)
+            </th>
+        </thead>
+        <tr>
+            <td style="width: 50%; text-align: right;">
+                <input type='file' accept='text/plain' onchange='veriOku(event)'>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <button onclick="Kaydet()">Kaydet</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Öğrenci Ekleme & Eklenen Öğrenci tabloları -->
+    <table>
+        <tr>
+
+            <!-- Öğrenci Ekleme tablosu -->
+            <td style="width: 50%;">
+                <table>
+                    <thead>
+                        <th colspan="2">Öğrenci Ekleme</th>
+                    </thead>
+                    <tr>
+                        <td><label for="">Numara:</label></td>
+                        <td><input type="text" name="" id="ogr-numara"> <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Ad:</label></td>
+                        <td><input type="text" name="" id="ogr-ad"> <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Soyad:</label></td>
+                        <td><input type="text" name="" id="ogr-soyad"> <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Vize:</label></td>
+                        <td><input type="text" name="" id="ogr-vize"> <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Final:</label></td>
+                        <td><input type="text" name="" id="ogr-final"> <br></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="2">
+                            <button style="background-color: indianred;" onclick="Temizle()">Temizle</button>
+                            <button onclick="OgrenciOlustur()">Oluştur</button>
+                            <button onclick="OgrenciEkle()">Ekle</button>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </td>
+
+            <!-- Eklenen/Bulunan Öğrenci tablosu -->
+            <td style="width: 50%;">
+                <table>
+                    <thead>
+                        <th colspan="2" style="background-color: green;" id="ogr-bilgi-baslik">
+                            Öğrenci
+                        </th>
+                    </thead>
+                    <tbody id="ogrenci-bilgi">
+                        <tr>
+                            <td style="width: 50%;">Numara:</td>
+                            <td id="eklenen-ogr-numara"></td>
+                        </tr>
+                        <tr>
+                            <td>Ad:</td>
+                            <td id="eklenen-ogr-ad"></td>
+                        </tr>
+                        <tr>
+                            <td>Soyad:</td>
+                            <td id="eklenen-ogr-soyad"></td>
+                        </tr>
+                        <tr>
+                            <td>Vize:</td>
+                            <td id="eklenen-ogr-vize"></td>
+                        </tr>
+                        <tr>
+                            <td>Final:</td>
+                            <td id="eklenen-ogr-final"></td>
+                        </tr>
+                        <tr>
+                            <td>Başarı Notu:</td>
+                            <td id="eklenen-ogr-basarinotu"></td>
+                        </tr>
+                        <tr>
+                            <td>Harf Notu:</td>
+                            <td id="eklenen-ogr-harfnotu"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Öğrenci Arama tablosu -->
+    <table>
+        <thead>
+            <th colspan="3" style="text-align: center; background-color: rebeccapurple;">
+                Öğrenci Arama
+            </th>
+        </thead>
+        <tr>
+            <td style="text-align: center;">
+                <label for="">Numara:</label>
+                <input type="text" name="" id="aranan-ogr-numara">
+                <button style="background-color: pink;" onclick="OgrenciAra()">Ara</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Öğrenci Listesi tablosu -->
+    <table id="table2">
+        <thead>
+            <th colspan="8" style="text-align: center;">Öğrenci Listesi</th>
+        </thead>
+        <thead>
+            <th>#</th>
+            <th>Numara</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Vize</th>
+            <th>Final</th>
+            <th>Başarı Notu</th>
+            <th>Harf Notu</th>
+        </thead>
+        <tbody id="ogrenci-listesi">
+            <!-- javascript ile öğrenci listesi alınıyor -->
+        </tbody>
+    </table>
+</body>
+
+</html>

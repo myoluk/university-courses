@@ -1,0 +1,13 @@
+﻿@using Project.abznotebook.Web.Pages
+@model OrderSummaryViewModel
+
+
+<th scope="row">@Model.OrderId</th>
+<td>@Model.OrderDate</td>
+
+<td>@Model.ShipStatus</td>
+
+<td>@Model.AllowStatus</td>
+
+<td>@Model.PaymentMethod</td>
+<td>@Model.CustomerFullName.ToUpper()</td>

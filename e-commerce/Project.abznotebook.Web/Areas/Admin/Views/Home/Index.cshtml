@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+
+<body>
+
+    <div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">Kontrol Paneli</h1>
+    </div>
+
+
+    <div class="card mt-10 mb-5">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Siparişlere Genel Bakış
+        </div>
+        <div class="card-body">
+            @await Component.InvokeAsync("OrderSummary")
+        </div>
+    </div>
+</body>
+

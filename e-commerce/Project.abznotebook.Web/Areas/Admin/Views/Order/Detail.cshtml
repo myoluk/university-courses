@@ -1,0 +1,114 @@
+﻿@model OrderDetailViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sipariş Özeti</h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Sipariş Numarası</th>
+                            <th scope="col">Sipariş Tarihi</th>
+                            <th scope="col">Kargo Durumu</th>
+                            <th scope="col">Onay Durumu</th>
+                            <th scope="col">Müşteri Adı</th>
+                            <th scope="col">Ödeme Yöntemi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <partial name="OrderSummaryPartial" model="@Model"/>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ürün Bilgileri</h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Adet</th>
+                            <th scope="col">Birim Fiyat</th>
+                            <th scope="col">Toplam Ödenen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach (var bill in @Model.Bill)
+                        {
+                            <tr>
+                                <th scope="row">@bill.Product.SKU</th>
+                                <td>@bill.Product.Name</td>
+                                <td>@bill.Quantity</td>
+                                <td>@bill.UnitPrice</td>
+                                <td>@bill.TotalPrice</td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kargo Bilgileri</h5>
+                    <p class="card-text">@Model.ShipperCompanyName</p>
+                    <p class="card-text">@Model.ShipperPhone</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Adres Bilgileri</h5>
+                    <p class="card-text">@Model.AddressLine</p>
+                    <p class="card-text">@Model.AddressNeighborhood</p>
+                    <p class="card-text">@Model.AddressDistrict / @Model.AddressCity</p>
+                    <p class="card-text">@Model.AddressPostalCode</p>
+                    <a class="btn btn-outline-success">Adresi Düzenle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col my-2">
+            <div class="card">
+                <form method="post" asp-action="Detail">
+                    <div class="card-body text-right">
+                        <button type="submit" class="btn btn-outline-danger" asp-route-orderId="@Model.OrderId" asp-route-allowStatus="false">Reddet</button>
+                        <button type="submit" class="btn btn-outline-success" asp-route-orderId="@Model.OrderId" asp-route-allowStatus="true">Onayla</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

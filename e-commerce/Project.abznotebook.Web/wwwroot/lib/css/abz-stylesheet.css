@@ -1,0 +1,77 @@
+﻿body {
+    width: 100%;
+}
+
+div.filter {
+    border: solid 1px lightgray;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+div.filter-first {
+    border-bottom: solid 1px lightgray;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+div.filter-mid {
+    border-top: none;
+    border-bottom: solid 1px lightgray;
+    border-radius: 0;
+}
+
+div.filter-last {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+img.card-image {
+    width: 100%;
+    height: 100%;
+    background-position: inherit;
+    border: 2px dashed black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+div.abz-card-image {
+    width: 300px;
+    height: 300px;
+    border: 1px double red;
+}
+
+div.abz-card-text {
+    width: 100%;
+    height: 100px;
+    border: 1px dotted purple;
+    display: block;
+    word-wrap: break-word;
+}
+
+div.abz-card-text h4 {
+    width: 100%;
+    height: 30px;
+    display: block;
+    border: dashed 1px blue;
+    word-wrap: normal;
+}
+div.abz-card-text p {
+    width: 100%;
+    height: 30px;
+    display: inline-block;
+}
+
+div.abz-card-btn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 1px double red;
+}
+
+dib.abz-card-btn button {
+    background-position:center;
+}
+
+

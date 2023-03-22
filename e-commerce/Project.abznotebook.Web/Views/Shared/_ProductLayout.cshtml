@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/Template/theme/content/product.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/img/favicon_transparent.ico" rel="icon" type="image/x-icon" />
+    <link href="~/lib/Template/theme/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/css/abz-stylesheet.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="~/lib/css/abz-product-slider.css">
+
+    <link href="~/img/favicon_transparent.ico" rel="icon" type="image/x-icon" />
+
+</head>
+<body>
+
+<partial name="NavbarPartial" />
+
+
+    <div class="container" style="width:80%; margin: 50px auto; border:1px solid lightgray; border-radius:7px">
+        @RenderBody()
+    </div>
+
+
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+
+
+    @*
+        for abz-product-slider
+    *@
+    <script type="text/javascript">
+        let thumbnails = document.getElementsByClassName('thumbnail')
+
+        let activeImages = document.getElementsByClassName('active')
+
+        for (var i = 0; i < thumbnails.length; i++) {
+
+            thumbnails[i].addEventListener('mouseover', function () {
+                console.log(activeImages)
+
+                if (activeImages.length > 0) {
+                    activeImages[0].classList.remove('active')
+                }
+
+
+                this.classList.add('active')
+                document.getElementById('featured').src = this.src
+            })
+        }
+
+
+        let buttonRight = document.getElementById('slideRight');
+        let buttonLeft = document.getElementById('slideLeft');
+
+        buttonLeft.addEventListener('click', function () {
+            document.getElementById('slider').scrollLeft -= 180
+        })
+
+        buttonRight.addEventListener('click', function () {
+            document.getElementById('slider').scrollLeft += 180
+        })
+
+
+    </script>
+
+
+
+</body>
+</html>

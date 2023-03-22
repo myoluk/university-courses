@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_StandartLayout.cshtml";
+}
+<div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+    <h1 style="width:100%; text-align:center">Siparişlerim</h1>
+</div>
+
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-md-12">
+            @await Component.InvokeAsync("UserOrdersSummary")
+        </div>
+        
+    </div>
+</div>
+

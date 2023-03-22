@@ -1,0 +1,93 @@
+﻿@model List<CategoryViewModel>
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+<body>
+    <div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">Kategori İşlemleri</h1>
+    </div>
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header">
+                <i class="fa fa-table mr-1"></i> Kategoriler
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <a class="btn btn-primary" asp-controller="Operations" asp-action="AddCategory">Kategori Ekle</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ad</th>
+                                <th>Açıklama</th>
+                                <th>Ürün Sayısı</th>
+                                <th>Düzenle / Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var category in Model)
+                            {
+                                <tr>
+                                    <td>@category.Id</td>
+                                    <td>@category.Name</td>
+                                    <td>@(category?.Description ?? "Detay Mevcut Değil")</td>
+                                    <td>@category.CountOfProduct</td>
+                                    <td>
+
+                                        <form asp-action="DeleteCategory" asp-route-id="@category.Id" method="post">
+                                            <a class="btn btn-success" style="width:100%" asp-controller="Operations" asp-action="EditCategory" asp-route-id="@category.Id">Düzenle</a>
+
+
+                                            <span id="confirmDeleteSpan_@category.Id" style="display: none">
+                                                <i>Onaylıyor musunuz?</i>
+
+                                                <button type="submit" class="btn btn-danger" style="width:100%">Onayla</button>
+                                                <a href="#" class="btn btn-primary" style="width:100%" onclick="confirmDelete('@category.Id', false)">Vazgeç</a>
+                                            </span>
+
+                                            <span id="deleteSpan_@category.Id">
+                                                <a href="#" class="btn btn-outline-danger" style="width:100%" onclick="confirmDelete('@category.Id', true)">Sil</a>
+                                            </span>
+
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+@section scripts
+{
+    <script>
+        function confirmDelete(uniqueId, isDeleteClicked) {
+            var deleteSpan = 'deleteSpan_' + uniqueId;
+            var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+            if (isDeleteClicked) {
+                $('#' + deleteSpan).hide();
+                $('#' + confirmDeleteSpan).show();
+            }
+            else {
+                $('#' + deleteSpan).show();
+                $('#' + confirmDeleteSpan).hide();
+            }
+        }
+    </script>
+}

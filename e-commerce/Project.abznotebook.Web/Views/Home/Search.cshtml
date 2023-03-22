@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+
+            @foreach (var product in Model)
+            {
+                <partial name="ProductSummary" model="product" />
+            }
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

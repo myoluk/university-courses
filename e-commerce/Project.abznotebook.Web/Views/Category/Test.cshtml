@@ -1,0 +1,19 @@
+﻿@model TestFilter
+
+<form method="get" asp-action="Search">
+    <div class="form-group">
+        <label asp-for="SelectedVendor">Marka</label>
+        <select class="form-control" asp-for="SelectedVendor" asp-items="@ViewBag.Vendor">
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="SelectedMemory">Marka</label>
+        <select class="form-control" asp-for="SelectedMemory" asp-items="@ViewBag.Memory">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>

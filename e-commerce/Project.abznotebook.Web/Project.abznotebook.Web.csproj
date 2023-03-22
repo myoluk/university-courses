@@ -1,0 +1,205 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Components\**" />
+    <Content Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\Admin\" />
+    <Folder Include="Base\Member\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\admin-front-packs\dist\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\dist\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\dist\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\dist\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\dist\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\lib\admin-front-packs\dist\js\scripts.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\build-assets.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\build-pug.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\build-scripts.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\build-scss.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\clean.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\render-assets.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\render-pug.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\render-scripts.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\render-scss.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\sb-watch.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\start-debug.js" />
+    <None Include="wwwroot\lib\admin-front-packs\scripts\start.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\lib\admin-front-packs\src\js\scripts.js" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\authentication.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\dashboard.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\error.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\footer.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\head\css.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\head\icons.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\head\meta.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\head\title.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\navigation\sidenav.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\navigation\topnav.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\layouts\includes\scripts.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\401.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\404.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\500.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\charts.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\includes\datatable.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\includes\page-header.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\index.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\layout-sidenav-light.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\layout-static.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\login.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\password.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\register.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\pug\pages\tables.pug" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\layout\_authentication.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\layout\_dashboard-default.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\layout\_dashboard-fixed.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\layout\_error.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\navigation\sidenav\_sidenav-dark.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\navigation\sidenav\_sidenav-light.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\navigation\sidenav\_sidenav.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\navigation\_nav.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\navigation\_topnav.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\styles.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\variables\_navigation.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\variables\_spacing.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\_global.scss" />
+    <None Include="wwwroot\lib\admin-front-packs\src\scss\_variables.scss" />
+    <None Include="wwwroot\lib\jquery-validate\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.min.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\.browserslistrc" />
+    <None Include="wwwroot\lib\Template\adminTemplate\.gitignore" />
+    <None Include="wwwroot\lib\Template\adminTemplate\.travis.yml" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\lib\Template\adminTemplate\dist\js\scripts.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\LICENSE" />
+    <None Include="wwwroot\lib\Template\adminTemplate\README.md" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\build-assets.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\build-pug.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\build-scripts.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\build-scss.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\clean.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\render-assets.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\render-pug.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\render-scripts.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\render-scss.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\sb-watch.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\start-debug.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\scripts\start.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\js\scripts.js" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\authentication.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\dashboard.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\error.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\footer.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\head\css.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\head\icons.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\head\meta.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\head\title.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\navigation\sidenav.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\navigation\topnav.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\layouts\includes\scripts.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\401.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\404.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\500.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\charts.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\includes\datatable.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\includes\page-header.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\index.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\layout-sidenav-light.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\layout-static.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\login.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\password.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\register.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\pug\pages\tables.pug" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\layout\_authentication.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\layout\_dashboard-default.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\layout\_dashboard-fixed.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\layout\_error.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\navigation\sidenav\_sidenav-dark.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\navigation\sidenav\_sidenav-light.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\navigation\sidenav\_sidenav.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\navigation\_nav.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\navigation\_topnav.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\styles.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\variables\_navigation.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\variables\_spacing.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\_global.scss" />
+    <None Include="wwwroot\lib\Template\adminTemplate\src\scss\_variables.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\.npmignore" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\animated.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\core.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\icons.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\larger.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\list.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\path.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\screen-reader.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\less\variables.less" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\README.md" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\lib\Template\theme\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\lib\twitter-bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\twitter-bootstrap\js\bootstrap.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Project.abznotebook.Business\Project.abznotebook.Business.csproj" />
+  </ItemGroup>
+
+</Project>

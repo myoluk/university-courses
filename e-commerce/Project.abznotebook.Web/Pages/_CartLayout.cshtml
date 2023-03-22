@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/lib/Template/theme/content/test.css" rel="stylesheet" />
+    <link href="~/lib/Template/theme/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="~/lib/css/abz-stylesheet.css" rel="stylesheet" />
+
+    <title>abz | Sepetim</title>
+    <link href="~/img/favicon_transparent.ico" rel="icon" type="image/x-icon" />
+</head>
+<body>
+
+    <partial name="NavbarPartial" />
+
+    <div class="container" style="width:80%; margin:0 auto">
+        <div class="row" style="margin-top:50px">
+            <div class="col-md-12" style="border: solid 1px lightgray; border-radius: 7px; padding-top:50px; padding-bottom:50px; margin-bottom:50px">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

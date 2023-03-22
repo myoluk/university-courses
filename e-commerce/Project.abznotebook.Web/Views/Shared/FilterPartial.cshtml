@@ -1,0 +1,90 @@
+﻿@using Project.abznotebook.Web.Pages
+@model FilterViewModel
+
+@{
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+
+<form class="col-md-3" id="form1" method="get" asp-controller="@controllerName" asp-action="@actionName">
+
+
+    <div class="filter filter-first">
+        <h6 class="font-weight-bold">MARKA</h6>
+        <div class="mt-2 mb-2 pl-2">
+            @foreach (var vendor in Model.Vendors)
+            {
+                <div class="mt-2 mb-2 pl-2">
+                    <input type="button" value="@vendor" onclick="addSelectedVendor(this)" />
+                </div>
+            }
+        </div>
+
+        <div class="filter filter-mid">
+            <h6 class="font-weight-bold">RAM</h6>
+            @foreach (var memory in Model.Memories)
+            {
+                <div class="mt-2 mb-2 pl-2">
+                    <input type="button" value="@memory" onclick="addSelectedMemory(this)" />
+                </div>
+            }
+        </div>
+
+        <div class="filter filter-last">
+            <h6 class="font-weight-bold">İşlemci</h6>
+            @foreach (var processor in Model.Processors)
+            {
+                <div class="mt-2 mb-2 pl-2">
+                    <input type="button" value="@processor" onclick="addSelectedProcessor(this)" />
+                </div>
+            }
+        </div>
+
+        <input hidden asp-for="SelectedVendor" />
+        <input hidden asp-for="SelectedMemory" />
+        <input hidden asp-for="SelectedProcessor" />
+
+        <a asp-action="@actionName" asp-controller="@controllerName" class="btn btn-lg btn-block btn-warning mt-3">Sıfırla</a>
+
+    </div>
+
+</form>
+
+
+@*<form id="form1" method="get" asp-controller="@controllerName" asp-action="@actionName">
+
+        @foreach (var vendor in Model.Vendors)
+        {
+            <div class="mt-2 mb-2 pl-2">
+                <input type="button" value="@vendor" onclick="addSelectedVendor(this)" />
+            </div>
+        }
+
+
+        <h6 class="font-weight-bold">Memory</h6>
+        @foreach (var memory in Model.Memories)
+        {
+            <div class="mt-2 mb-2 pl-2">
+                <input type="button" value="@memory" onclick="addSelectedMemory(this)" />
+            </div>
+        }
+
+        <h6 class="font-weight-bold">Processor</h6>
+        @foreach (var processor in Model.Processors)
+        {
+            <div class="mt-2 mb-2 pl-2">
+                <input type="button" value="@processor" onclick="addSelectedProcessor(this)" />
+            </div>
+        }
+
+        <input hidden asp-for="SelectedVendor" />
+        <input hidden asp-for="SelectedMemory" />
+        <input hidden asp-for="SelectedProcessor" />
+
+        <hr />
+        <div class="mt-2 mb-2 pl-2">
+            <a class="btn btn-danger" asp-action="@actionName" asp-controller="@controllerName">Sıfırla</a>
+        </div>
+    </form>*@
+

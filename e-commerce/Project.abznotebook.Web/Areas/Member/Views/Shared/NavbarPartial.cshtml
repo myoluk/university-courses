@@ -1,0 +1,86 @@
+﻿@*
+    Member's Navbar    
+*@
+
+<style>
+    .search-item-text {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .search-item-btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+</style>
+<div style="width:100%">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style="text-align:center">
+
+        <div class="container" style="width:80%; text-align:center; margin:0 auto">
+
+            <a class="navbar-brand" href="/">
+                <img src="~/img/favicon_transparent.png" alt="" width="30" height="30" />
+                <span class="fa" style="font-family: Arial, Helvetica, sans-serif">abz notebook</span>
+            </a>
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Category" asp-action="HomeOffice">Notebook<span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Category" asp-action="Gaming">Oyun Bilgisayarı</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Category" asp-action="TwoInOne">İkisi Bir Arada</a>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-0 search-item-text" type="text" placeholder="Bir ürün ara">
+                            <button class="btn btn-outline-success my-2 my-sm-0 search-item-btn" type="submit"><span class="fa fa-search"></span></button>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown dropleft">
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link" href="#" id="dropdownIdprofil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user mr-2"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownIdprofil">
+                                <a class="dropdown-item" href="/Admin">Kontrol Paneli</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="LogOut">Çıkış</a>
+                            </div>
+
+                        }
+                        else if (User.IsInRole("Member"))
+                        {
+                            <a class="nav-link" href="#" id="dropdownIdprofil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user mr-2"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownIdprofil">
+                                <a class="dropdown-item" href="/Member">Profil</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="LogOut" >Çıkış</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="nav-link" asp-controller="Account" asp-action="Login" id="dropdownIdprofil" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user mr-2"></span></a>
+                        }
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="~/cart" id="dropdownId" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-shopping-bag"></span></a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</div>

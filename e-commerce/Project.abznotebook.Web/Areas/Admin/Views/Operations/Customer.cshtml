@@ -1,0 +1,73 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "User";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+<body>
+    <div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">Kullanıcı İşlemleri</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header">
+                <i class="fa fa-user mr-1"></i>
+                Kullanıcılar
+            </div>
+            <div class="card-body">
+                <form asp-action="Customer" method="get">
+                    <div class="form-actions no-color">
+                        <p class="text-right">
+                            Kullanıcı Adı: <input type="text" name="SearchString" value="@ViewBag.FromSearch" />
+                            <input type="submit" value="Ara" class="btn btn-default" /> |
+                            <a asp-action="Customer">Temizle</a>
+                        </p>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a asp-action="Customer" asp-route-sortOrder="@ViewBag.IdSort">Id</a>
+                                </th>
+
+                                <th>
+                                    <a asp-action="Customer" asp-route-sortOrder="@ViewBag.NameSort">Ad</a>
+                                </th>
+                                <th>
+                                    <a asp-action="Customer" asp-route-sortOrder="@ViewBag.SurnameSort">Soyad</a>
+                                </th>
+                                <th>
+                                    <a asp-action="Customer" asp-route-sortOrder="@ViewBag.UsernameSort">Kullanıcı Adı</a>
+                                </th>
+                                <th>E-Mail Adresi</th>
+                                <th>Detay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@user.Id</td>
+                                    <td>@user.Name.ToUpper()</td>
+                                    <td>@user.Surname.ToUpper()</td>
+                                    <td>@user.Username</td>
+                                    <td>@user.Mail</td>
+
+                                    <td>
+                                        <a class="btn btn-outline-info" asp-action="CustomerOrders" asp-controller="Operations" asp-route-userId="@user.Id">
+                                            Siparişlerini Gör
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>

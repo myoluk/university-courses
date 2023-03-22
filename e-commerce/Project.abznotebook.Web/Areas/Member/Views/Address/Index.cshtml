@@ -1,0 +1,38 @@
+﻿@model List<Address>
+
+<div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+    <h1 style="width:100%; text-align:center">Adreslerim</h1>
+</div>
+
+@{
+    if (Model.Count != 0)
+    {
+        <div style="width:100%; border-bottom:1px solid lightgray; padding:10px 0; text-align:center; margin-bottom:20px">
+            <a class="btn btn-primary" asp-controller="Address" asp-action="AddAddress">Adres Ekle</a>
+        </div>
+        <div class="container-fluid mt-10 mb-5">
+            <div class="row">
+                @foreach (var address in Model)
+                {
+                    <partial name="AddressPartial" model="address" />
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <table class="table table-bordered table-striped" style="font-family: Arial, Helvetica, sans-serif">
+                <tr>
+                    <td class="text-center" style="color:green; font-size:larger; font-weight:bold">
+                        <i class="fa fa-circle-o-notch"></i> Henüz adres kaydetmedin.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center"><a asp-controller="Address" asp-action="AddAddress">Buraya</a> tıklayarak adres oluşturabilirsin.</td>
+                </tr>
+            </table>
+        </div>
+    }
+
+}

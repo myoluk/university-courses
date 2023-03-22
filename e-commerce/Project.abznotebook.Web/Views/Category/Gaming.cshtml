@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_StandartLayout";
+}
+
+
+@model ProductListViewModel
+
+
+
+@section sort
+{
+    <a class="btn btn-primary btn-order" asp-controller="Category" asp-action="Gaming" asp-route-sortOrder="best_match">En İyi Eşleşme</a>
+    <a class="btn btn-primary btn-order" asp-controller="Category" asp-action="Gaming" asp-route-sortOrder="asc_price">Artan Fiyat</a>
+    <a class="btn btn-primary btn-order" asp-controller="Category" asp-action="Gaming" asp-route-sortOrder="desc_price">Azalan Fiyat</a>
+}
+
+
+@section filter
+{
+    <partial name="FilterPartial" model="@Model.FilterTypes" />
+}
+
+<div class="container" style="margin:0; padding:0; text-align:center; border-bottom:1px solid lightgray">
+    <div class="row text-center">
+        @foreach (var product in Model.Products)
+        {
+            <partial name="ProductSummary" model="product" />
+        }
+    </div>
+</div>
+
+<div style="margin: 50px 0">
+    <table style="width:100%">
+        <tr>
+            <td class="text-center">
+                @*<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                         class="btn-group">
+                    </div>*@
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin: 50px 0">
+    <table style="width:100%">
+        <tr>
+            <td class="text-center">
+                <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                     class="btn-group">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

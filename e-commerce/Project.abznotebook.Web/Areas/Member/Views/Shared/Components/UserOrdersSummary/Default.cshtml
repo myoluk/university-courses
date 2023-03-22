@@ -1,0 +1,74 @@
+﻿@model List<OrderSummaryViewModel>
+
+
+@if (Model.Count == 0)
+{
+    <table class="table table-bordered table-striped" style="font-family: Arial, Helvetica, sans-serif">
+        <tr>
+            <td class="text-center" style="color:green; font-size:larger; font-weight:bold">
+                <i class="fa fa-shopping-bag"></i> Hiç alışverişin yok.
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">Alışveriş yapmak için <strong>abz</strong> notebook'un fırsatlarla dolu dünyasına göz atarak <a href="~/">ürünleri</a> incelemeye başlayabilirsin.</td>
+        </tr>
+    </table>
+}
+
+else
+{
+    @foreach (var order in Model)
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sipariş Tarihi</th>
+                        <th>Sipariş Özeti</th>
+                        <th>Alıcı</th>
+                        <th>Tutar</th>
+                        <th>Detay</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td>@order.OrderDate.ToString("M") @order.OrderDate.Year - @order.OrderDate.ToString("t")</td>
+
+                        <td>@order.ProductCount Ürün</td>
+
+                        <td>@order.CustomerFullName</td>
+
+                        <td>@order.TotalPrice.ToString("C")</td>
+
+                        <td>
+                            <a class="btn btn-outline-info" asp-controller="Order" asp-action="Detail" asp-route-orderId="@order.OrderId">
+                                Sipariş Detayı
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+                @foreach (string item in @order.ProductImages)
+                {
+                    <img src="~/img/@item" alt="Generic placeholder image" width="50" class="ml-lg-5 order-1 order-lg-2">
+                }
+                <div class="d-flex align-items-center justify-content-between mt-1">
+                    <ul class="list-inline small">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+
+}
+
+
+

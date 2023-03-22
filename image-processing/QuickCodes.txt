@@ -1,0 +1,57 @@
+# Image Processing - MATLAB Hızlı Kodlar (Quick Codes) #
+
+Komut sonunda noktalı virgül (;) kullanınca kod çalışır fakat çıktı görünmez.
+Komutlar arasına virgül (,) konularak çoklu komut girilir.
+
+Resmi piksel piksel okuma
+	> imread('cameraman.tif')
+
+Resmi değişkene atama
+	> a = imread('cameraman.tif')
+
+Resmi açma
+	> imshow('cameraman.tif')
+
+Tek figürde 2x2 adet resim gösterme ve birincisine atama yapma
+	> subplot(221);imshow(a)
+	Dördüncüsüne atama yapma
+	> subplot(224):imshow(b)
+
+Görüntü için yeni figür oluşturma
+	> figure
+	yazılır ve sonrasında gelen görüntü burada gösterilir
+	
+Görüntü hakkında detaylı bilgi alma
+	> imfinfo('cameraman.tif')
+
+Kaydedilen değişkenler hakkında detaylı bilgi alma
+	> whos
+
+Figür içinde gezerken canlı görüntü bilgisini gösterme
+	> impixelinfo
+	
+512x1024 boyutunda siyah görüntü oluşturma
+	> img1 = uint8(zeros(512,1024));
+	> imshow(img1)
+
+512x1024 boyutunda beyaz görüntü oluşturma
+	> img2 = uint8(255 *ones(512,1024))
+	>imshow(img2)
+
+Pikseldeki RGB değerlerine bakma
+	> impixel(a,20,30)
+
+RGB resimler R,G ve B şeklinde her piksel için 3 renk kodu içerir.
+Indexed resimler ise her piksel için bir kod ve bu koda eşdeğer colormap renk kodları içerir.
+Grayscale resimler, her piksel için 0-1 aralığında ton değerini tutar.
+
+Indexed resimleri  değişkene atama
+	> [b,bmap] = imread('canoe.tif')	% hem index numarası hem colormap diziye aktarılır %
+
+## Format Dönüşümleri (Conversions) ##
+ind2gray    (Indexed to Grayscale)    y=ind2gray(x,map)
+gray2ind    (Grayscale to Indexed)    [y,map]=gray2ind(x)
+rgb2gray    (RGB to Grayscale)        y=rgb2gray(x)
+gray2rgb    (Grayscale to RGB)        y=gray2rgb(x)
+rgb2ind     (RGB to Indexed)          [y,map]=rgb2ind
+ind2rgb     (Indexed to RGB)          y=ind2rgb(x,map)

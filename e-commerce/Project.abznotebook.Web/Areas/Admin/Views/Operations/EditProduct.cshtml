@@ -1,0 +1,139 @@
+﻿@model EditProductViewModel
+@{
+    ViewData["Title"] = "EditProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+<div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+    <h1 style="width:100%; text-align:center">Ürünü Güncelle</h1>
+</div>
+
+<div class="container" style="width:80%; text-align:left">
+    <div class="row my-4">
+        <div class="card-body">
+
+            <div class="container" style="width:100%; text-align:center">
+                <div class="row my-4">
+                    <div class="card-body">
+                        <div class="custom-control custom-checkbox" style="padding:0; margin:0">
+                            <img src="~/img/@Model.Image1" class="img-fluid img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="w-75 mx-auto p-3" method="post" asp-action="EditProduct" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label asp-for="Name">Ad</label>
+                    <input type="text" asp-for="Name" class="form-control" value="@Model.Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Vendor">Marka</label>
+                    <select class="form-control" asp-for="Vendor" asp-items="@ViewBag.Vendors">
+                        <option hidden value="-1">@Model.Vendor</option>
+                    </select>
+                    <span asp-validation-for="Vendor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RealPrice">Gerçek Fiyatı</label>
+                    <input type="number" asp-for="RealPrice" class="form-control" value="@Convert.ToInt32(@Model.RealPrice)" />
+                    <span asp-validation-for="RealPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnitPrice">İndirimli Fiyatı</label>
+                    <input type="number" asp-for="UnitPrice" class="form-control" value="@Convert.ToInt32(@Model.UnitPrice)" />
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnitInStock">Stok Adedi</label>
+                    <input type="number" asp-for="UnitInStock" class="form-control" value="@Model.UnitInStock" />
+                    <span asp-validation-for="UnitInStock" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.IsAvailable">Stok Durumu</label>
+                    <input asp-for="@Model.IsAvailable" type="checkbox" value="true" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CategoryId">Kategori</label>
+                    <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories">
+                        <option hidden value="-1">@Model.CategoryId</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProcessorVendor">İşlemci Markası</label>
+                    <select class="form-control" asp-for="ProcessorVendor" asp-items="@ViewBag.ProcessorVendors">
+                        <option hidden value="-1">@Model.ProcessorVendor</option>
+                    </select>
+                    <span asp-validation-for="ProcessorVendor" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProcessorType">İşlemci Modeli</label>
+                    <input type="text" asp-for="ProcessorType" class="form-control" />
+                    <span asp-validation-for="ProcessorType" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="GraphicsCard">Ekran Kartı</label>
+                    <input type="text" asp-for="GraphicsCard" class="form-control" />
+                    <span asp-validation-for="GraphicsCard" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DiscCapacity">Depolama Kapasitesi</label>
+                    <select class="form-control" asp-for="DiscCapacity" asp-items="@ViewBag.DiscCapacities">
+                        <option hidden value="-1">@Model.DiscCapacity</option>
+                    </select>
+                    <span asp-validation-for="DiscCapacity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MemoryCapacity">Bellek</label>
+                    <select class="form-control" asp-for="MemoryCapacity" asp-items="@ViewBag.Memories">
+                        <option hidden value="-1">@Model.MemoryCapacity</option>
+                    </select>
+                    <span asp-validation-for="MemoryCapacity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Tanım</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" asp-for="Image1" class="form-control" hidden value="@Model.Image1" />
+                    <span asp-validation-for="Image1" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" asp-for="Image2" class="form-control" hidden value="@Model.Image2" />
+                    <span asp-validation-for="Image2" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" asp-for="Image3" class="form-control" hidden value="@Model.Image3" />
+                    <span asp-validation-for="Image3" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" asp-for="SKU" class="form-control" hidden value="@Model.SKU" />
+                    <span asp-validation-for="SKU" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-outline-warning ">Güncelle</button>
+
+            </form>
+        </div>
+    </div>
+</div>

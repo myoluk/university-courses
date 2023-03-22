@@ -1,0 +1,80 @@
+﻿@page
+@model CartModel
+
+@{
+    Layout = "~/Pages/_CartLayout.cshtml";
+}
+<body>
+    <div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">Sepetim</h1>
+    </div>
+
+    @{
+        if (Model.Cart.Lines.Count != 0)
+        {
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ürün</th>
+                        <th>Fiyat</th>
+                        <th>Adet</th>
+                        <th colspan="2" class="text-left">Toplam</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var line in Model.Cart.Lines)
+                    {
+                        <tr>
+                            <td class="text-left">@line.Product.Name</td>
+                            <td class="text-left">@line.Product.UnitPrice.ToString("c")</td>
+                            <td class="text-center">@line.Quantity</td>
+                            <td class="text-left">
+                                @((line.Quantity * line.Product.UnitPrice).ToString("c"))
+                            </td>
+                            <td class="text-center">
+                                <form asp-page-handler="Remove" method="post">
+                                    <input type="hidden" name="id"
+                                           value="@line.Product.Id" />
+                                    <input type="hidden" name="returnUrl"
+                                           value="@Model.ReturnUrl" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        Kaldır
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td class="text-right">
+                        Ödenecek Tutar : @Model.Cart.ComputeTotalValue().ToString("c")
+                    </td>
+                </tr>
+            </table>
+            <div class="text-center">
+                <a class="btn btn-outline-success" href="@Model.ReturnUrl">Alışverişe Devam Et</a>
+                <a class="btn btn-outline-primary" asp-action="Checkout" asp-controller="Order">Alışverişi Tamamla</a>
+            </div>
+        }
+
+        else
+        {
+            <table class="table table-bordered table-striped" style="font-family: Arial, Helvetica, sans-serif">
+                <tr>
+                    <td class="text-center" style="color:green; font-size:larger; font-weight:bold">
+                        <i class="fa fa-shopping-bag"></i> Sepetin şu an boş.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">Sepetini <strong>abz</strong> notebook'un fırsatlarla dolu dünyasından doldurmak için <a href="~/">ürünleri</a> incelemeye başlayabilirsin.</td>
+                </tr>
+            </table>
+        }
+    }
+
+
+</body>

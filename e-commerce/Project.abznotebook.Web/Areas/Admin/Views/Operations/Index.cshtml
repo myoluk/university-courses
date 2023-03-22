@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>İşlemler</title>
+</head>
+<body>
+    <div class="mb-5" style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">İşlemler</h1>
+    </div>
+    <div class="container" style="width:50%; text-align:center">
+        <div class="row">
+
+            <div class="card bg-primary text-white mb-4" style="width:100%">
+                <div class="card-body">Kullanıcı İşlemleri</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-controller="Operations" asp-action="Customer">İşlem Yap</a>
+                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+
+            <div class="card bg-warning text-white mb-4" style="width:100%">
+                <div class="card-body">Ürün İşlemleri</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-controller="Operations" asp-action="Product">İşlem Yap</a>
+                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+
+            <div class="card bg-danger text-white mb-5" style="width:100%">
+                <div class="card-body">Kategori İşlemleri</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-controller="Operations" asp-action="Category">İşlem Yap</a>
+                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+

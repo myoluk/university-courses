@@ -1,0 +1,136 @@
+﻿@model IQueryable<Product>
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+<body>
+    <div style="border-bottom:1px solid lightgray; padding-bottom:30px">
+        <h1 style="width:100%; text-align:center">Ürün İşlemleri</h1>
+    </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-header">
+            <i class="fa fa-table mr-1"></i>
+            Ürünler
+        </div>
+        
+        
+
+        <div class="card-body">
+            <form asp-action="Product" method="get">
+                <div class="form-actions no-color">
+                    <a class="btn btn-primary" asp-controller="Operations" asp-action="AddProduct">Ürün Ekle</a>
+                    <p class="text-right">
+                        Ürün Adı veya SKU: <input type="text" name="SearchString" value="@ViewBag.FromSearch" />
+                        <input type="submit" value="Ara" class="btn btn-default" /> |
+                        <a asp-action="Product">Temizle</a>
+                    </p>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.IdSort">Id</a>
+                        </th>
+
+                        <th>
+                            SKU
+                        </th>
+
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.NameSort">Ad</a>
+                        </th>
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.VendorSort">Marka</a>
+
+                        </th>
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.StockSort">Stok Adedi</a>
+                        </th>
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.StockStatusSort">Stok Durumu</a>
+
+                        </th>
+                        <th>
+                            <a asp-action="Product" asp-route-sortOrder="@ViewBag.PriceSort">Fiyat</a>
+
+                        </th>
+                        <th>Düzenle / Sil</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>@product.SKU.Substring(0, 8).ToUpper()</td>
+                            <td>@product.Name</td>
+                            <td>@product.Vendor</td>
+                            <td>@product.UnitInStock</td>
+                            @if (product.IsAvailable)
+                            {
+                                <td>Stokta Var</td>
+                            }
+                            else
+                            {
+                                <td>Stokta Yok</td>
+                            }
+                            <td>@product.UnitPrice.ToString("C")</td>
+                            <td>
+
+                                <form asp-action="DeleteProduct" asp-route-id="@product.Id" method="post">
+                                    <a class="btn btn-success" style="width:100%" asp-controller="Operations" asp-action="EditProduct" asp-route-id="@product.Id">Düzenle</a>
+
+
+                                    <span id="confirmDeleteSpan_@product.Id" style="display: none">
+                                        <i>Onaylıyor musunuz?</i>
+
+                                        <button type="submit" class="btn btn-danger" style="width:100%">Onayla</button>
+                                        <a href="#" class="btn btn-primary" style="width:100%" onclick="confirmDelete('@product.Id', false)">Vazgeç</a>
+                                    </span>
+
+                                    <span id="deleteSpan_@product.Id">
+                                        <a href="#" class="btn btn-outline-danger" style="width:100%" onclick="confirmDelete('@product.Id', true)">Sil</a>
+                                    </span>
+
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+
+@section scripts
+{
+    <script>
+        function confirmDelete(uniqueId, isDeleteClicked) {
+            var deleteSpan = 'deleteSpan_' + uniqueId;
+            var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+            if (isDeleteClicked) {
+                $('#' + deleteSpan).hide();
+                $('#' + confirmDeleteSpan).show();
+            }
+            else {
+                $('#' + deleteSpan).show();
+                $('#' + confirmDeleteSpan).hide();
+            }
+        }
+    </script>
+}
+
+
+
+

@@ -1,0 +1,46 @@
+﻿@model List<OrderSummaryViewModel>
+@{
+    ViewData["Title"] = "CustomerOrders";
+    Layout = "~/Areas/Admin/Views/Shared/_StandartLayout.cshtml";
+}
+
+
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Sipariş Numarası</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Kargo Durumu</th>
+                    <th>Onay Durumu</th>
+                    <th>Ödeme Yöntemi</th>
+                    <th>Sipariş Sahibi</th>
+                    <th>Detay</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <partial name="OrderSummaryPartial" model="order" />
+
+                        <td>
+                            <a class="btn btn-outline-info" asp-controller="Order" asp-action="Detail" asp-route-orderId="@order.OrderId">
+                                Sipariş Detayı
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

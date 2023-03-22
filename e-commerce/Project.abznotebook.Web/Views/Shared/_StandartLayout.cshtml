@@ -1,0 +1,188 @@
+﻿@using System.Security.Principal
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/lib/Template/theme/content/test.css" rel="stylesheet" />
+    <link href="~/lib/Template/theme/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="~/lib/css/abz-stylesheet.css" rel="stylesheet" />
+
+    <title>abz | En iyisi</title>
+    <link href="~/img/favicon_transparent.ico" rel="icon" type="image/x-icon" />
+
+    <style>
+        a.btn-order {
+            width: 30%;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+            a.btn-order:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+
+            a.btn-order:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+    </style>
+</head>
+<body>
+
+    <partial name="NavbarPartial" />
+
+    @RenderSection("order", false)
+
+    @*<div class="col-md-12 text-right mt-2">
+            <div class="dropdown show">
+                <a class="" asp-controller="Home" asp-action="Index" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: gray; font-size: 15px;">
+                    <span class="fa fa-caret-down"> @ViewBag.OrderStatus </span>
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-sortOrder="best_match">En İyi Eşleşme</a>
+                    <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-sortOrder="asc_price">Fiyat: Artan</a>
+                    <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-sortOrder="desc_price"> Fiyat: Azalan</a>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="container" style="width:80%; margin:0 auto">
+        <div class="row" style="margin-top:50px">
+
+            @RenderSection("filter", false)
+            @*<div class="col-md-3">
+
+                    <div class="filter filter-first">
+                        <h6 class="font-weight-bold">MARKA</h6>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-1">
+                                <label class="custom-control-label" for="category-1">Acer</label>
+                            </div>
+                        </div>
+
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-2">
+                                <label class="custom-control-label" for="category-2">Apple</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-3">
+                                <label class="custom-control-label" for="category-3">Asus</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-4">
+                                <label class="custom-control-label" for="category-4">Dell</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-5">
+                                <label class="custom-control-label" for="category-5">HP</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="category-6">
+                                <label class="custom-control-label" for="category-6">Lenovo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter filter-mid">
+                        <h6 class="font-weight-bold">RAM</h6>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filter-size-1">
+                                <label class="custom-control-label" for="filter-size-1">4GB</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filter-size-2">
+                                <label class="custom-control-label" for="filter-size-2">8GB</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filter-size-3">
+                                <label class="custom-control-label" for="filter-size-3">12GB</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filter-size-4">
+                                <label class="custom-control-label" for="filter-size-4">16GB</label>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-2 pl-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filter-size-5">
+                                <label class="custom-control-label" for="filter-size-5">32GB</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter filter-last">
+                        <h6 class="font-weight-bold">FİYAT</h6>
+                        <div class="price-filter-control">
+                            <input type="number" class="form-control w-50 pull-left mb-2" value="0" id="price-min-control">
+                            <input type="number" class="form-control w-50 pull-right" value="1500" id="price-max-control">
+                        </div>
+                        <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
+                        <div class="mt-5 mb-5"></div>
+                    </div>
+                    <a href="#" class="btn btn-lg btn-block btn-warning mt-3">Filtrele</a>
+                </div>*@
+
+            <div class="col-md-9" style="border: solid 1px lightgray; border-radius: 7px; padding-top:30px; margin-bottom:50px">
+                <div style="width: 100%; margin: 0 0 50px 0; padding: 0 0 30px 0; text-align: center; border-bottom: 1px solid lightgray">
+                    @RenderSection("sort", false)
+                    @*<a class="btn btn-primary btn-order" asp-controller="Home" asp-action="Index" asp-route-sortOrder="best_match">En İyi Eşleşme</a>
+                        <a class="btn btn-primary btn-order" asp-controller="Home" asp-action="Index" asp-route-sortOrder="asc_price">Artan Fiyat</a>
+                        <a class="btn btn-primary btn-order" asp-controller="Home" asp-action="Index" asp-route-sortOrder="desc_price">Azalan Fiyat</a>*@
+                </div>
+
+                @RenderBody()
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        function addSelectedVendor(i) {
+            $("#SelectedVendor").val($(i).val());
+            $("#form1").submit();
+        }
+        function addSelectedMemory(i) {
+            $("#SelectedMemory").val($(i).val());
+            $("#form1").submit();
+        }
+        function addSelectedProcessor(i) {
+            $("#SelectedProcessor").val($(i).val());
+            $("#form1").submit();
+        }
+    </script>
+
+</body>
+</html>
